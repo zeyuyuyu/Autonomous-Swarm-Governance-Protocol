@@ -3,119 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwarmGov - Level Up Democracy!</title>
+    <title>SwarmRank - Compete in the Hive!</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
 </head>
-<body class="bg-gradient-to-br from-purple-900 to-indigo-900 text-white min-h-screen">
-    <div id="confetti-canvas" class="fixed inset-0 pointer-events-none"></div>
+<body class="bg-gray-900 text-white">
+    <div id="confetti-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none"></div>
     
-    <nav class="p-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <img src="/assets/logo.svg" class="h-8 animate-pulse" alt="SwarmGov Logo">
-            <span class="text-2xl font-bold">SwarmGov</span>
-        </div>
-        <div class="flex items-center space-x-4">
-            <div class="flex items-center bg-purple-800 rounded-full px-4 py-2">
-                <span class="mr-2">🏆</span>
-                <span id="points">1,234</span>
-            </div>
-            <div class="relative">
-                <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Felix" class="h-10 w-10 rounded-full border-2 border-purple-500">
-                <div class="absolute -top-1 -right-1 bg-green-500 h-3 w-3 rounded-full border-2 border-white"></div>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">🐝 SwarmRank</h1>
+            <div class="flex items-center space-x-4">
+                <span class="text-yellow-400">⭐ Your Influence: <span id="influence-score">1,234</span></span>
+                <span class="text-green-400">🏆 Rank: #<span id="user-rank">42</span></span>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto p-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 space-y-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-bold">Active Proposals</h2>
-                    <span class="bg-purple-600 rounded-full px-3 py-1 text-sm">Level 5 Required</span>
-                </div>
-                <div class="space-y-4" id="proposals">
-                    <!-- Dynamic Proposal Cards -->
+            <!-- Achievement System -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-bold mb-4">🎯 Daily Challenges</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-semibold">Submit 3 Proposals</h3>
+                            <div class="w-48 bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 rounded-full h-2 w-2/3"></div>
+                            </div>
+                        </div>
+                        <span class="text-blue-400">+500 XP</span>
+                    </div>
+                    <!-- More challenges... -->
                 </div>
             </div>
 
-            <div class="space-y-8">
-                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-                    <h2 class="text-xl font-bold mb-4">Your Achievements</h2>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="achievement-card text-center p-4 bg-purple-800 rounded-lg hover:scale-105 transition-transform cursor-pointer">
-                            <span class="text-3xl">🎯</span>
-                            <p class="text-sm mt-2">First Vote</p>
-                        </div>
-                        <div class="achievement-card text-center p-4 bg-purple-800/50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
-                            <span class="text-3xl">⭐</span>
-                            <p class="text-sm mt-2">Top Voter</p>
-                        </div>
-                        <div class="achievement-card text-center p-4 bg-purple-800/50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
-                            <span class="text-3xl">🚀</span>
-                            <p class="text-sm mt-2">Trend Setter</p>
-                        </div>
-                    </div>
+            <!-- Social Feed -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-bold mb-4">🔥 Trending Proposals</h2>
+                <div class="space-y-4" id="proposal-feed">
+                    <!-- Dynamic proposal cards -->
                 </div>
+            </div>
+        </div>
 
-                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-                    <h2 class="text-xl font-bold mb-4">Leaderboard</h2>
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between bg-purple-800/50 p-3 rounded-lg">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-xl">👑</span>
-                                <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Alex" class="h-8 w-8 rounded-full">
-                                <span>Alex.eth</span>
-                            </div>
-                            <span>12,345 pts</span>
-                        </div>
-                        <!-- More leaderboard entries -->
-                    </div>
+        <!-- Gamification Elements -->
+        <div class="mt-8 bg-gray-800 rounded-lg p-6 shadow-lg">
+            <h2 class="text-xl font-bold mb-4">🌟 Your Impact Journey</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-3xl font-bold text-yellow-400">24</div>
+                    <div class="text-sm text-gray-400">Proposals Created</div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-3xl font-bold text-green-400">89%</div>
+                    <div class="text-sm text-gray-400">Approval Rate</div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-3xl font-bold text-blue-400">156</div>
+                    <div class="text-sm text-gray-400">Supporters</div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-3xl font-bold text-purple-400">Level 8</div>
+                    <div class="text-sm text-gray-400">Influence Tier</div>
                 </div>
             </div>
         </div>
     </main>
 
-    <div id="achievement-popup" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden animate__animated animate__fadeInUp">
-        <div class="flex items-center space-x-3">
-            <span class="text-2xl">🏆</span>
-            <div>
-                <h3 class="font-bold">Achievement Unlocked!</h3>
-                <p class="text-sm">First Proposal Created</p>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
-        // Gamification Logic
-        function showAchievement(title) {
-            const popup = document.getElementById('achievement-popup');
-            popup.classList.remove('hidden');
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-            setTimeout(() => popup.classList.add('hidden'), 3000);
-        }
-
-        // Social Features
-        function shareAchievement() {
-            // Social media sharing implementation
-        }
-
-        // Dynamic Content Loading
-        function loadProposals() {
-            // Fetch and display proposals with animations
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProposals();
-            // Show welcome achievement for new users
-            setTimeout(() => showAchievement('Welcome!'), 1000);
+        // Initialize confetti for achievements
+        const confetti = new ConfettiGenerator({
+            target: 'confetti-canvas',
+            max: 80,
+            size: 1.5,
+            animate: true,
+            respawn: false
         });
+
+        // Simulate achievement unlock
+        setTimeout(() => {
+            confetti.render();
+            setTimeout(() => confetti.clear(), 2500);
+        }, 1000);
+
+        // Real-time feed updates
+        setInterval(() => {
+            const feed = document.getElementById('proposal-feed');
+            const newProposal = document.createElement('div');
+            newProposal.className = 'bg-gray-700 rounded p-4 animate-pulse';
+            newProposal.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <h3 class="font-semibold">New Community Proposal</h3>
+                    <span class="text-sm text-gray-400">Just now</span>
+                </div>
+                <p class="text-sm text-gray-300 mt-2">A new proposal needs your vote!</p>
+                <div class="flex space-x-2 mt-2">
+                    <button class="px-3 py-1 bg-green-600 rounded-full text-sm">Support</button>
+                    <button class="px-3 py-1 bg-red-600 rounded-full text-sm">Decline</button>
+                </div>
+            `;
+            feed.insertBefore(newProposal, feed.firstChild);
+            if (feed.children.length > 5) feed.removeChild(feed.lastChild);
+        }, 5000);
     </script>
 </body>
 </html>
