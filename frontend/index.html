@@ -3,110 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHarmony - Level Up Your Coding Journey!</title>
+    <title>SwarmGov - Level Up Democracy!</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen text-white">
+<body class="bg-gradient-to-br from-purple-900 to-indigo-900 text-white min-h-screen">
     <div id="confetti-canvas" class="fixed inset-0 pointer-events-none"></div>
     
-    <header class="p-4 flex justify-between items-center">
+    <nav class="p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <img src="/assets/logo.svg" class="h-8 animate-pulse" alt="SwarmGov Logo">
+            <span class="text-2xl font-bold">SwarmGov</span>
+        </div>
         <div class="flex items-center space-x-4">
-            <img src="/assets/logo.svg" class="h-10 animate__animated animate__pulse animate__infinite" alt="GitHarmony">
-            <div class="text-2xl font-bold">GitHarmony</div>
-        </div>
-        <div class="flex items-center space-x-6">
+            <div class="flex items-center bg-purple-800 rounded-full px-4 py-2">
+                <span class="mr-2">🏆</span>
+                <span id="points">1,234</span>
+            </div>
             <div class="relative">
-                <span class="absolute -top-1 -right-1 bg-green-400 rounded-full h-3 w-3 animate-ping"></span>
-                <div class="text-xl">🔥 <span id="streak-count">12</span> Day Streak!</div>
-            </div>
-            <div class="flex items-center bg-purple-800 rounded-lg p-2">
-                <img src="/assets/xp-star.svg" class="h-6 mr-2">
-                <span id="xp-count" class="text-xl font-bold">1,337 XP</span>
+                <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Felix" class="h-10 w-10 rounded-full border-2 border-purple-500">
+                <div class="absolute -top-1 -right-1 bg-green-500 h-3 w-3 rounded-full border-2 border-white"></div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <main class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 hover:transform hover:scale-105 transition-all">
-                <h2 class="text-2xl font-bold mb-4">Today's Challenges 🎯</h2>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                        <div>Merge 3 Pull Requests</div>
-                        <div class="text-green-400">+100 XP</div>
-                    </div>
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                        <div>Review 5 Code Submissions</div>
-                        <div class="text-green-400">+150 XP</div>
-                    </div>
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 space-y-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold">Active Proposals</h2>
+                    <span class="bg-purple-600 rounded-full px-3 py-1 text-sm">Level 5 Required</span>
+                </div>
+                <div class="space-y-4" id="proposals">
+                    <!-- Dynamic Proposal Cards -->
                 </div>
             </div>
 
-            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-                <h2 class="text-2xl font-bold mb-4">Achievement Unlocked! 🏆</h2>
-                <div class="text-center p-6 bg-white/5 rounded-lg">
-                    <div class="text-6xl mb-4">🚀</div>
-                    <div class="text-xl font-bold mb-2">Code Fusion Master</div>
-                    <p class="text-purple-300">Successfully merged 100 pull requests!</p>
-                    <button onclick="shareAchievement()" class="mt-4 bg-purple-500 hover:bg-purple-600 px-6 py-2 rounded-full flex items-center mx-auto">
-                        <span>Share</span>
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12">
-            <h2 class="text-2xl font-bold mb-6">Global Leaderboard 🌎</h2>
-            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all cursor-pointer">
-                        <div class="flex items-center">
-                            <div class="text-2xl mr-4">🥇</div>
-                            <img src="https://avatars.githubusercontent.com/u/1?v=4" class="w-10 h-10 rounded-full mr-4">
-                            <div>CodingNinja</div>
+            <div class="space-y-8">
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-4">Your Achievements</h2>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="achievement-card text-center p-4 bg-purple-800 rounded-lg hover:scale-105 transition-transform cursor-pointer">
+                            <span class="text-3xl">🎯</span>
+                            <p class="text-sm mt-2">First Vote</p>
                         </div>
-                        <div class="text-xl font-bold">12,450 XP</div>
+                        <div class="achievement-card text-center p-4 bg-purple-800/50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
+                            <span class="text-3xl">⭐</span>
+                            <p class="text-sm mt-2">Top Voter</p>
+                        </div>
+                        <div class="achievement-card text-center p-4 bg-purple-800/50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
+                            <span class="text-3xl">🚀</span>
+                            <p class="text-sm mt-2">Trend Setter</p>
+                        </div>
                     </div>
-                    <!-- More leaderboard entries... -->
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-4">Leaderboard</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between bg-purple-800/50 p-3 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-xl">👑</span>
+                                <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Alex" class="h-8 w-8 rounded-full">
+                                <span>Alex.eth</span>
+                            </div>
+                            <span>12,345 pts</span>
+                        </div>
+                        <!-- More leaderboard entries -->
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <div id="achievement-popup" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden animate__animated animate__fadeInUp">
+        <div class="flex items-center space-x-3">
+            <span class="text-2xl">🏆</span>
+            <div>
+                <h3 class="font-bold">Achievement Unlocked!</h3>
+                <p class="text-sm">First Proposal Created</p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
-        function shareAchievement() {
+        // Gamification Logic
+        function showAchievement(title) {
+            const popup = document.getElementById('achievement-popup');
+            popup.classList.remove('hidden');
             confetti({
                 particleCount: 100,
                 spread: 70,
                 origin: { y: 0.6 }
             });
-            // Social sharing logic
+            setTimeout(() => popup.classList.add('hidden'), 3000);
         }
 
-        // Animated counters
-        function animateValue(id, start, end, duration) {
-            let current = start;
-            const range = end - start;
-            const increment = end > start ? 1 : -1;
-            const stepTime = Math.abs(Math.floor(duration / range));
-            const obj = document.getElementById(id);
-            const timer = setInterval(() => {
-                current += increment;
-                obj.innerHTML = current;
-                if (current == end) {
-                    clearInterval(timer);
-                }
-            }, stepTime);
+        // Social Features
+        function shareAchievement() {
+            // Social media sharing implementation
         }
 
-        // Initialize animations
+        // Dynamic Content Loading
+        function loadProposals() {
+            // Fetch and display proposals with animations
+        }
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            animateValue("xp-count", 0, 1337, 2000);
+            loadProposals();
+            // Show welcome achievement for new users
+            setTimeout(() => showAchievement('Welcome!'), 1000);
         });
     </script>
 </body>
